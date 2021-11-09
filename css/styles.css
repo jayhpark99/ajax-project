@@ -41,12 +41,11 @@ img:active {
   position: relative;
 }
 
-main {
+body {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("/images/background.png");
-  background-size: fill;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding-top: 6rem;
 }
 
 h2 {
@@ -57,4 +56,8 @@ h2 {
   font-size: 1.7rem;
   z-index: 1;
   text-shadow: 3px 3px black;
+}
+
+main {
+  padding: 6rem;
 }

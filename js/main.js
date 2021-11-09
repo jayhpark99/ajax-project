@@ -4,8 +4,8 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json');
 xhr.responseType = 'json';
 xhr.addEventListener('load', function renderChampions() {
-  var championData = xhr.response;
-  for (var key in championData.data) {
+  var allChampionData = xhr.response;
+  for (var key in allChampionData.data) {
     var $columnHalf = document.createElement('div');
     $columnHalf.className = 'column-half';
 
