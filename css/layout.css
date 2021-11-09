@@ -1,6 +1,7 @@
 .container {
   width: 600px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .row {
@@ -25,5 +26,10 @@
     width: 1000px;
     margin: 0 auto;
     height: 100vh;
+  }
+
+  h1 {
+    text-align: left;
+    margin-left: 3rem;
   }
 }
