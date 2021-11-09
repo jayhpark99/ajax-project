@@ -1,0 +1,41 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  background-color: #1f2a92;
+  color: white;
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Oxygen Mono', monospace;
+  margin: 0;
+  font-size: 3rem;
+}
+
+img {
+  border-radius: 1.3rem;
+  width: 90%;
+  margin: 1rem;
+}
+
+.card {
+  text-align: center;
+  margin-top: 1rem;
+  position: relative;
+}
+
+main {
+  background-image: url("/images/background.png");
+}
+
+h2 {
+  position: absolute;
+  bottom: 1rem;
+  left: 2.5rem;
+  color: white;
+  font-size: 1.7rem;
+}

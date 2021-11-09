@@ -1,0 +1,29 @@
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.column-half {
+  width: 50%;
+}
+
+@media screen and (min-width: 1000px) {
+  .column-half {
+    width: 20%;
+  }
+
+  .container {
+    width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+  }
+}
