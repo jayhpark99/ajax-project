@@ -10,13 +10,15 @@ xhr.addEventListener('load', function renderChampions() {
     $columnHalf.className = 'column-half';
 
     var $card = document.createElement('div');
-    $card.className = 'card';
+    $card.className = 'card ' + key;
     $columnHalf.appendChild($card);
 
     var $name = document.createElement('h2');
     $name.textContent = key;
+
     var $img = document.createElement('img');
     $img.setAttribute('src', 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg');
+
     $card.appendChild($name);
     $card.appendChild($img);
     $parentRow.appendChild($columnHalf);
