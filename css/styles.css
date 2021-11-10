@@ -22,7 +22,7 @@ h1 {
 img {
   border-radius: 1.3rem;
   width: 90%;
-  margin: 0.4rem;
+  margin-left: 0.7rem;
   filter: brightness(70%);
   box-shadow: 6px 3px 3px black;
 }
@@ -62,10 +62,10 @@ body {
 
 h2 {
   position: absolute;
-  bottom: 2rem;
-  left: 1.8rem;
+  bottom: 1.6rem;
+  left: 1.4rem;
   color: white;
-  font-size: 1.5rem;
+  font-size: 2.5vw;
   z-index: 1;
   text-shadow: 3px 3px black;
 }
@@ -73,25 +73,25 @@ h2 {
 h3 {
   position: absolute;
   bottom: 1rem;
-  left: 1.8rem;
+  left: 1.4rem;
   color: white;
-  font-size: 1rem;
+  font-size: 1.55vw;
   z-index: 1;
 }
 
 p {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.5rem;
+  left: 0.5rem;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.9vw;
   z-index: 1;
   padding: 0 1rem;
   text-align: left;
-  overflow-y: scroll;
   max-height: 360px;
   animation: fadein 2s;
   display: none;
+  overflow-y: scroll;
 }
 
 .loreShown {
