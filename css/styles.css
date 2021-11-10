@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -13,9 +13,10 @@ header {
 }
 
 h1 {
-  font-family: 'Oxygen Mono', monospace;
+  /* font-family: 'Oxygen Mono', monospace; */
   margin: 0;
   font-size: 3rem;
+  display: inline-block;
 }
 
 img {
@@ -63,7 +64,7 @@ h2 {
   bottom: 2rem;
   left: 1.8rem;
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   z-index: 1;
   text-shadow: 3px 3px black;
 }
@@ -89,6 +90,24 @@ p {
   overflow-y: scroll;
   max-height: 360px;
   animation: fadein 2s;
+  visibility: hidden;
+}
+
+p::-webkit-scrollbar {
+  width: 2px;
+}
+
+p::-webkit-scrollbar-track {
+  background: none;
+}
+
+p::-webkit-scrollbar-thumb {
+  background: white;
+  height: 5px;
+}
+
+p:hover {
+  visibility: visible;
 }
 
 @keyframes fadein {
@@ -96,19 +115,10 @@ p {
   to { opacity: 1; }
 }
 
-::-webkit-scrollbar {
-  width: 2px;
-}
-
-::-webkit-scrollbar-track {
-  background: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background: white;
-  height: 5px;
-}
-
 main {
   padding: 8rem;
+}
+
+.yellow {
+  color: rgb(247, 163, 80);
 }
