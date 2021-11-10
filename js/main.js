@@ -40,7 +40,7 @@ function handleCardClick(event) {
     if (!$parentCard.className.includes('lore')) {
       xhr2.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $h2.textContent + '.json');
       xhr2.responseType = 'json';
-      xhr2.addEventListener('load', function getChapionData() {
+      xhr2.addEventListener('load', function getChampionData() {
         var individualChampionData = xhr2.response;
         var $lore = document.createElement('p');
         $lore.textContent = individualChampionData.data[$h2.textContent].lore;
