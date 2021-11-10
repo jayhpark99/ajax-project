@@ -1,10 +1,10 @@
-.container {
+/* .container {
   width: 600px;
   margin: 0 auto;
   height: 100vh;
-}
+} */
 
-.row {
+.container {
   display: flex;
   flex-wrap: wrap;
 }

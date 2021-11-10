@@ -31,20 +31,21 @@ img:hover {
   filter: brightness(25%);
 }
 
-img:active {
-  position: relative;
-  top: 5px;
-}
-
 .card {
   text-align: center;
   margin-top: 1rem;
   position: relative;
+  transition: transform 400ms;
+  min-width: 150px;
+}
+
+.card:active {
+  position: relative;
+  top: 5px;
 }
 
 .card:hover {
   transform: scale(110%);
-  transition: transform 400ms;
   z-index: 2;
 }
 

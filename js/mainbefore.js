@@ -1,4 +1,4 @@
-var $parentRow = document.querySelector('.row');
+var $parentRow = document.querySelector('.container');
 
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json');
