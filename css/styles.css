@@ -9,7 +9,7 @@ header {
   text-align: center;
   width: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 }
 
 h1 {
@@ -41,6 +41,16 @@ img:active {
   position: relative;
 }
 
+.card:hover {
+  transform: scale(110%);
+  transition: transform 400ms;
+  z-index: 2;
+}
+
+.dark {
+  filter: brightness(25%);
+}
+
 body {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("/images/background.png");
   background-size: cover;
@@ -50,14 +60,55 @@ body {
 
 h2 {
   position: absolute;
-  bottom: 1rem;
-  left: 2rem;
+  bottom: 2rem;
+  left: 1.8rem;
   color: white;
   font-size: 1.7rem;
   z-index: 1;
   text-shadow: 3px 3px black;
 }
 
+h3 {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.8rem;
+  color: white;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+p {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  z-index: 1;
+  padding: 0 1rem;
+  text-align: left;
+  overflow-y: scroll;
+  max-height: 360px;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  height: 5px;
+}
+
 main {
-  padding: 6rem;
+  padding: 8rem;
 }
