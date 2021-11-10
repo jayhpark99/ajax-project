@@ -22,7 +22,7 @@ h1 {
 img {
   border-radius: 1.3rem;
   width: 90%;
-  margin: 1rem;
+  margin: 0.4rem;
   filter: brightness(70%);
   box-shadow: 6px 3px 3px black;
 }
@@ -32,11 +32,11 @@ img:hover {
 }
 
 .card {
-  text-align: center;
   margin-top: 1rem;
   position: relative;
   transition: transform 400ms;
   min-width: 150px;
+  justify-content: center;
 }
 
 .card:active {
