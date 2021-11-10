@@ -14,28 +14,20 @@ function renderChampions() {
   for (var key in data.allChampionData.data) {
     var $columnHalf = document.createElement('div');
     $columnHalf.className = 'column-half';
-
     var $card = document.createElement('div');
     $card.className = 'card';
-
     for (var i = 0; i < data.allChampionData.data[key].tags.length; i++) {
-      $card.setAttribute('roles', data.allChampionData.data[key].tags[0] + ' ' + data.allChampionData.data[key].tags[1]);
+      $columnHalf.setAttribute('roles', 'All ' + data.allChampionData.data[key].tags[0] + ' ' + data.allChampionData.data[key].tags[1]);
     }
-
     $columnHalf.appendChild($card);
-
     var $name = document.createElement('h2');
     $name.textContent = key;
-
     var $title = document.createElement('h3');
     $title.textContent = capitalizeFirstLetter(data.allChampionData.data[key].title);
-
     var $lore = document.createElement('p');
     $lore.textContent = data.allChampionData.data[key].blurb;
-
     var $img = document.createElement('img');
     $img.setAttribute('src', 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg');
-
     $card.appendChild($lore);
     $card.appendChild($title);
     $card.appendChild($name);
@@ -45,42 +37,57 @@ function renderChampions() {
   data.allChampionData = xhr.response;
 }
 
+document.addEventListener('click', handleCardClick);
+
+var $allButtons = document.querySelectorAll('button');
+function handleCardClick(event) {
+  if (event.target.tagName === 'BUTTON') {
+    showRole(event.target.textContent);
+    for (var i = 0; i < $allButtons.length; i++) {
+      if (event.target.textContent === $allButtons[i].textContent) {
+        $allButtons[i].className = 'selected';
+      } else { $allButtons[i].className = ''; }
+    }
+  } else if (event.target.tagName === 'IMG' || event.target.tagName === 'P') {
+    toggleLore();
+  }
+}
+
+var $allCards = document.querySelectorAll('.column-half');
+function showRole(role) {
+  for (var i = 0; i < $allCards.length; i++) {
+    if (!$allCards[i].getAttribute('roles').includes(role)) {
+      $allCards[i].style.display = 'none';
+    } else { $allCards[i].style.display = 'flex'; }
+  }
+}
+
+function toggleLore() {
+  var $parentCard = event.target.closest('div');
+  var $img = $parentCard.querySelector('img');
+  var $lore = $parentCard.querySelector('p');
+  if (!$parentCard.className.includes('lore')) {
+    $parentCard.className += ' lore';
+    $img.className = 'dark';
+    $lore.className = 'loreShown';
+  } else {
+    $parentCard.className = 'card';
+    $img.className = '';
+    $lore.className = '';
+  }
+}
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// document.addEventListener('click', handleCardClick);
-// function handleCardClick(event) {
-//   if (event.target.tagName === 'IMG') {
-//     var xhr2 = new XMLHttpRequest();
-//     var $parentCard = event.target.closest('div');
-//     var $h2 = event.target.previousSibling;
-//     var $img = $parentCard.querySelector('img');
-//     if (!$parentCard.className.includes('lore')) {
-//       xhr2.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $h2.textContent + '.json');
-//       xhr2.responseType = 'json';
-//       xhr2.addEventListener('load', function getChampionData() {
-//         var individualChampionData = xhr2.response;
-//         var $lore = document.createElement('p');
-//         $lore.textContent = individualChampionData.data[$h2.textContent].lore;
-//         $parentCard.appendChild($lore);
-//         $parentCard.className += ' lore';
-//         $img.className = 'dark';
-//       });
-//       xhr2.send();
-//     } else if ($parentCard.className.includes('lore')) {
-//       removeLore();
-//     }
-//   } else if (event.target.tagName === 'P') {
-//     removeLore();
-//   }
-// }
-
-// function removeLore() {
+// FUNCTION TO FLIP CARD LATER
+// function flipCard() {
 //   var $parentCard = event.target.closest('div');
-//   var $img = $parentCard.querySelector('img');
-//   var $lore = $parentCard.querySelector('p');
-//   $parentCard.className = 'card';
-//   $lore.remove();
-//   $img.className = '';
+//   $parentCard.className = 'card flipped';
+//   hideLore();
+//   var $h3 = $parentCard.querySelector('h3');
+//   var $h2 = $parentCard.querySelector('h2');
+//   $h3.className = 'off';
+//   $h2.className = 'off';
 // }
