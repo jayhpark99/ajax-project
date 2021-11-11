@@ -166,6 +166,7 @@ input {
   border: 2px solid black;
   outline-color: rgb(247, 163, 80);
   font-size: 1rem;
+  width: 270px;
 }
 
 .fa-search {
