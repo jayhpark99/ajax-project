@@ -73,3 +73,14 @@ function removeLore() {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+// FUNCTION TO FLIP CARD LATER
+// function flipCard() {
+//   var $parentCard = event.target.closest('div');
+//   $parentCard.className = 'card flipped';
+//   hideLore();
+//   var $h3 = $parentCard.querySelector('h3');
+//   var $h2 = $parentCard.querySelector('h2');
+//   $h3.className = 'off';
+//   $h2.className = 'off';
+// }
