@@ -41,6 +41,7 @@
   header {
     text-align: left;
     padding-left: 3rem;
+    padding-right: 3rem;
     justify-content: space-between;
     flex-direction: row;
   }

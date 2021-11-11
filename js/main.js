@@ -62,6 +62,32 @@ function showRole(role) {
   }
 }
 
+var $form = document.querySelector('form');
+$form.addEventListener('submit', handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  showSearchedChampions($form.firstElementChild.value);
+}
+
+var $searchBar = document.querySelector('.fa-search');
+$searchBar.addEventListener('click', handleSearch);
+function handleSearch(event) {
+  if (event.target.className === 'fas fa-search') {
+    showSearchedChampions($form.firstElementChild.value);
+  }
+}
+
+function showSearchedChampions(name) {
+  var currentTag = document.querySelector('.selected');
+  for (var i = 0; i < $allCards.length; i++) {
+    if ($allCards[i].childNodes[0].childNodes[2].textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
+      $allCards[i].style.display = '';
+    } else {
+      $allCards[i].style.display = 'none';
+    }
+  }
+}
+
 function toggleLore() {
   var $parentCard = event.target.closest('div');
   var $img = $parentCard.querySelector('img');
