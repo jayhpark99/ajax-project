@@ -121,7 +121,7 @@ p::-webkit-scrollbar-thumb {
 }
 
 main {
-  padding: 7.5rem;
+  padding: 9rem;
 }
 
 .yellow {
@@ -160,7 +160,7 @@ button:active {
 }
 
 input {
-  padding: 0.2rem 0.3rem;
+  padding: 0.26rem 0.3rem;
   border-radius: 5px;
   border: 2px solid black;
   outline-color: rgb(247, 163, 80);
@@ -172,6 +172,31 @@ input {
   position: relative;
   right: 1.6rem;
   color: black;
+}
+
+.fa-th {
+  font-size: 2rem;
+  position: relative;
+  top: 6px;
+  margin: 0 10px 0 0;
+  transition: 1s;
+}
+
+.fa-th:hover {
+  color: rgb(247, 163, 80);
+  transform: rotateY(180deg);
+}
+
+.fa-heart {
+  font-size: 2rem;
+  position: relative;
+  top: 6px;
+  transition: 1s;
+}
+
+.fa-heart:hover {
+  color: rgb(247, 163, 80);
+  transform: rotateY(180deg);
 }
 
 .fa-caret-square-up {
@@ -188,4 +213,18 @@ input {
 
 html {
   scroll-behavior: smooth;
+}
+
+form {
+  transition: transform 500ms;
+  display: inline-block;
+}
+
+form:hover {
+  transform: scale(115%);
+}
+
+header > div > a {
+  text-decoration: none;
+  color: white;
 }

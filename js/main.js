@@ -74,8 +74,9 @@ function handleInput(event) {
   showSearchedChampions($searchBar.value);
 }
 
+var $rolesDiv = document.querySelector('.roles');
 function showSearchedChampions(name) {
-  var currentTag = document.querySelector('.selected');
+  var currentTag = $rolesDiv.querySelector('.selected');
   for (var i = 0; i < $allCards.length; i++) {
     if ($allCards[i].childNodes[0].childNodes[2].textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
       $allCards[i].style.display = '';
