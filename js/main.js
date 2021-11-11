@@ -103,3 +103,6 @@ function toggleLore() {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+var $scrollUpIcon = document.querySelector('.fa-caret-square-up');
+$scrollUpIcon.addEventListener('click', function () { window.scrollTo(0, 0); });
