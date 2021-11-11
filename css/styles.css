@@ -65,7 +65,7 @@ h2 {
   bottom: 1.6rem;
   left: 1.4rem;
   color: white;
-  font-size: 2.5vw;
+  font-size: 3.2vw;
   z-index: 1;
   text-shadow: 3px 3px black;
 }
@@ -88,10 +88,11 @@ p {
   z-index: 1;
   padding: 0 1rem;
   text-align: left;
-  max-height: 360px;
+  max-height: 24vh;
   animation: fadein 2s;
   display: none;
   overflow-y: scroll;
+  margin-right: 10px;
 }
 
 .loreShown {
