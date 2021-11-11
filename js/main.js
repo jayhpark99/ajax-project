@@ -66,15 +66,12 @@ var $form = document.querySelector('form');
 $form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
-  showSearchedChampions($form.firstElementChild.value);
 }
 
-var $searchBar = document.querySelector('.fa-search');
-$searchBar.addEventListener('click', handleSearch);
-function handleSearch(event) {
-  if (event.target.className === 'fas fa-search') {
-    showSearchedChampions($form.firstElementChild.value);
-  }
+var $searchBar = document.querySelector('input');
+$searchBar.addEventListener('input', handleInput);
+function handleInput(event) {
+  showSearchedChampions($searchBar.value);
 }
 
 function showSearchedChampions(name) {
