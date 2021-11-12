@@ -9,7 +9,7 @@ header {
   text-align: center;
   width: 100%;
   position: fixed;
-  z-index: 3;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +28,7 @@ img {
   margin-left: 0.7rem;
   filter: brightness(70%);
   box-shadow: 6px 3px 3px black;
+  transition: filter 200ms;
 }
 
 img:hover {
@@ -35,9 +36,9 @@ img:hover {
 }
 
 .card {
+  transition: transform 400ms;
   margin-top: 1rem;
   position: relative;
-  transition: transform 400ms;
   min-width: 150px;
   justify-content: center;
 }
@@ -48,8 +49,9 @@ img:hover {
 }
 
 .card:hover {
-  transform: scale(110%);
+  /* transform: scale(110%); */
   z-index: 2;
+  cursor: pointer;
 }
 
 .dark {
@@ -91,11 +93,9 @@ p {
   z-index: 1;
   padding: 0 1rem;
   text-align: left;
-  max-height: 24vh;
   animation: fadein 2s;
-  display: none;
   overflow-y: scroll;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .loreShown {
@@ -148,6 +148,7 @@ button:hover {
   color: rgb(247, 163, 80);
   transform: scale(1.08);
   transition: transform 200ms;
+  cursor: pointer;
 }
 
 button:active {
@@ -184,8 +185,67 @@ input {
 
 .fa-caret-square-up:hover {
   color: rgba(250, 250, 250, 0.7);
+  cursor: pointer;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+header > div > a {
+  color: white;
+  text-decoration: none;
+}
+
+.fa-angle-right {
+  position: absolute;
+  top: 30%;
+  right: 2vw;
+  color: rgba(230, 230, 230, 0.7);
+  z-index: 10;
+  font-size: 1.6rem;
+  display: none;
+  animation: fadein 2s;
+  padding: 4rem 0 4rem 1rem;
+}
+
+.fa-angle-right:hover {
+  color: rgba(160, 160, 160, 0.7);
+}
+
+.ability-icons {
+  position: absolute;
+  display: flex;
+  top: 1rem;
+  right: 0;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ability-icons img {
+  width: 20%;
+  margin: 0;
+}
+
+span {
+  position: absolute;
+  color: white;
+  transform: rotateY(180deg);
+  display: block;
+}
+
+span > p {
+  top: 3rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.ability-name {
+  top: 5vw;
+  left: 5px;
+}
+
+.ability-description {
+  top: 8vw;
+  margin-left: 0.6em;
 }

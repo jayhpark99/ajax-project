@@ -17,14 +17,12 @@
   width: 50%;
 }
 
-.off {
-  display: none;
+.on {
+  display: block;
 }
 
-@media screen and (min-width: 800px) {
-  h3 {
-    display: block;
-  }
+.off {
+  display: none;
 }
 
 @media screen and (min-width: 1000px) {
@@ -63,7 +61,28 @@
     top: 0;
   }
 
+  span > p {
+    max-width: 180px;
+    overflow-x: hidden;
+  }
+
   img {
     margin-left: 0.4rem;
+  }
+
+  .fa-angle-right {
+    right: 10px;
+  }
+
+  .ability-icons {
+    right: 0;
+  }
+
+  .ability-name {
+    top: 1.7rem;
+  }
+
+  .ability-description {
+    top: 3rem;
   }
 }
