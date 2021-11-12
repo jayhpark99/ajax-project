@@ -28,7 +28,7 @@ img {
   margin-left: 0.7rem;
   filter: brightness(70%);
   box-shadow: 6px 3px 3px black;
-  transition: filter 200ms;
+  transition: filter 300ms;
 }
 
 img:hover {
@@ -96,10 +96,6 @@ p {
   animation: fadein 2s;
   overflow-y: scroll;
   margin-right: 5px;
-}
-
-.loreShown {
-  display: block;
 }
 
 p::-webkit-scrollbar {
@@ -228,24 +224,20 @@ header > div > a {
 }
 
 span {
-  position: absolute;
+  position: static;
   color: white;
   transform: rotateY(180deg);
   display: block;
 }
 
-span > p {
-  top: 3rem;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
 .ability-name {
-  top: 5vw;
-  left: 5px;
+  font-size: 2vw;
+  top: 1.7rem;
 }
 
 .ability-description {
-  top: 8vw;
-  margin-left: 0.6em;
+  font-size: 2vw;
+  top: 4rem;
+  max-height: 30vw;
+  overflow: scroll;
 }
