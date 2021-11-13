@@ -16,6 +16,7 @@ function renderChampions() {
     $columnHalf.className = 'column-half';
     var $card = document.createElement('div');
     $card.className = 'card';
+    $card.style.backgroundImage = 'url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg' + ')';
     for (var i = 0; i < data.allChampionData.data[key].tags.length; i++) {
       $columnHalf.setAttribute('roles', 'All ' + data.allChampionData.data[key].tags[0] + ' ' + data.allChampionData.data[key].tags[1]);
     }
@@ -27,16 +28,13 @@ function renderChampions() {
     var $lore = document.createElement('p');
     $lore.textContent = data.allChampionData.data[key].blurb;
     $lore.className = 'off';
-    var $img = document.createElement('img');
-    $img.setAttribute('src', 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg');
     var $flipIcon = document.createElement('i');
     $flipIcon.className = 'fas fa-angle-right';
 
-    $card.appendChild($flipIcon);
-    $card.appendChild($lore);
-    $card.appendChild($title);
     $card.appendChild($name);
-    $card.appendChild($img);
+    $card.appendChild($title);
+    $card.appendChild($lore);
+    $card.appendChild($flipIcon);
     $parentContainer.appendChild($columnHalf);
   }
   data.allChampionData = xhr.response;
@@ -54,8 +52,8 @@ function handleCardClick(event) {
       } else { $allButtons[i].className = 'role'; }
     }
   } else if (event.target.closest('div').className.includes('card') &&
-  !event.target.closest('div').className.includes('flipped') &&
-  event.target.tagName !== 'I'
+  !event.target.className.includes('flipped') &&
+  event.target.tagName !== 'I' && event.target.tagName !== 'IMG' && event.target.tagName !== 'P'
   ) {
     toggleLore();
   } else if (event.target.className === 'fas fa-angle-right') {
@@ -97,17 +95,14 @@ function showSearchedChampions(name) {
 
 function toggleLore() {
   var $parentCard = event.target.closest('div');
-  var $img = $parentCard.querySelector('img');
   var $lore = $parentCard.querySelector('p');
   var $flipIcon = $parentCard.querySelector('i');
   if (!$parentCard.className.includes('lore')) {
     $parentCard.className += ' lore';
-    $img.className = 'dark';
     $lore.className = 'on';
     $flipIcon.style.display = 'flex';
   } else {
     $parentCard.className = 'card';
-    $img.className = '';
     $lore.className = 'off';
     $flipIcon.style.display = 'none';
   }
@@ -145,34 +140,35 @@ function flipCard() {
       $name.className = 'yellow ability-name off';
       var $description = document.createElement('p');
       $description.className = 'ability-description off';
-      $iconSpan.append($name, $description);
-      var $ability = $parentCard.querySelectorAll('span.ability-icons > p');
+      $parentCard.append($name, $description);
+      var $abilityName = $parentCard.querySelector('.ability-name');
+      var $abilityDescription = $parentCard.querySelector('.ability-description');
       $iconSpan.addEventListener('click', function () {
         if (event.target === $qIcon) {
-          $ability[0].textContent = individualChampionData.data[$h2.textContent].spells[0].name;
-          $ability[0].className = 'yellow ability-name';
-          $ability[1].textContent = individualChampionData.data[$h2.textContent].spells[0].description;
-          $ability[1].className = 'ability-description';
+          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[0].name;
+          $abilityName.className = 'yellow ability-name';
+          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[0].description;
+          $abilityDescription.className = 'ability-description';
         } else if (event.target === $wIcon) {
-          $ability[0].textContent = individualChampionData.data[$h2.textContent].spells[1].name;
-          $ability[0].className = 'yellow ability-name';
-          $ability[1].textContent = individualChampionData.data[$h2.textContent].spells[1].description;
-          $ability[1].className = 'ability-description';
+          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[1].name;
+          $abilityName.className = 'yellow ability-name';
+          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[1].description;
+          $abilityDescription.className = 'ability-description';
         } else if (event.target === $eIcon) {
-          $ability[0].textContent = individualChampionData.data[$h2.textContent].spells[2].name;
-          $ability[0].className = 'yellow ability-name';
-          $ability[1].textContent = individualChampionData.data[$h2.textContent].spells[2].description;
-          $ability[1].className = 'ability-description';
+          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[2].name;
+          $abilityName.className = 'yellow ability-name';
+          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[2].description;
+          $abilityDescription.className = 'ability-description';
         } else if (event.target === $rIcon) {
-          $ability[0].textContent = individualChampionData.data[$h2.textContent].spells[3].name;
-          $ability[0].className = 'yellow ability-name';
-          $ability[1].textContent = individualChampionData.data[$h2.textContent].spells[3].description;
-          $ability[1].className = 'ability-description';
+          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[3].name;
+          $abilityName.className = 'yellow ability-name';
+          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[3].description;
+          $abilityDescription.className = 'ability-description';
         }
       });
     });
     xhr2.send();
-  } else if ($parentCard.className === 'card lore flipped') {
+  } else if (event.target.tagName === 'I' && $parentCard.className === 'card lore flipped') {
     $parentCard.style.transform = '';
     $parentCard.className = 'card lore';
     $h3.className = '';

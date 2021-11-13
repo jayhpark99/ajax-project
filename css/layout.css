@@ -9,6 +9,8 @@
 
 .column-half {
   width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .on {
@@ -19,13 +21,13 @@
   display: none;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   .column-half {
     width: 20%;
   }
 
   .container {
-    width: 1000px;
+    width: 1300px;
     margin: 0 auto;
     height: 100vh;
   }
@@ -36,53 +38,5 @@
     padding-right: 3rem;
     justify-content: space-between;
     flex-direction: row;
-  }
-
-  h2 {
-    font-size: 1.45rem;
-    bottom: 2rem;
-  }
-
-  h3 {
-    font-size: 0.7rem;
-    bottom: 1.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    max-height: 220px;
-    left: 0;
-    top: 0;
-  }
-
-  span > p {
-    max-width: 180px;
-    overflow-x: hidden;
-  }
-
-  img {
-    margin-left: 0.4rem;
-  }
-
-  .fa-angle-right {
-    right: 10px;
-  }
-
-  .ability-icons {
-    right: 0;
-  }
-
-  .ability-name {
-    top: 1.5rem;
-    font-size: 1vw;
-    max-width: 200px;
-  }
-
-  .ability-description {
-    font-size: 1vw;
-    top: 4rem;
-    left: 1rem;
-    overflow: scroll;
-    max-height: 14vw;
   }
 }
