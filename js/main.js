@@ -23,6 +23,10 @@ function renderChampions() {
     $columnHalf.appendChild($card);
     var $name = document.createElement('h2');
     $name.textContent = key;
+    var $heart = document.createElement('i');
+    $heart.className = 'far fa-heart';
+    $heart.style.display = 'none';
+    $name.appendChild($heart);
     var $title = document.createElement('h3');
     $title.textContent = capitalizeFirstLetter(data.allChampionData.data[key].title);
     var $lore = document.createElement('p');
@@ -74,6 +78,7 @@ var $form = document.querySelector('form');
 $form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
+  showSearchedChampions($searchBar.value);
 }
 
 var $searchBar = document.querySelector('input');
@@ -85,7 +90,7 @@ function handleInput(event) {
 function showSearchedChampions(name) {
   var currentTag = document.querySelector('.selected');
   for (var i = 0; i < $allCards.length; i++) {
-    if ($allCards[i].childNodes[0].childNodes[3].textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
+    if ($allCards[i].childNodes[0].childNodes[0].textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
       $allCards[i].style.display = '';
     } else {
       $allCards[i].style.display = 'none';
@@ -96,15 +101,18 @@ function showSearchedChampions(name) {
 function toggleLore() {
   var $parentCard = event.target.closest('div');
   var $lore = $parentCard.querySelector('p');
-  var $flipIcon = $parentCard.querySelector('i');
+  var $flipIcon = $parentCard.querySelector('.fa-angle-right');
+  var $heart = $parentCard.querySelector('.fa-heart');
   if (!$parentCard.className.includes('lore')) {
     $parentCard.className += ' lore';
-    $lore.className = 'on';
+    $lore.className = '';
     $flipIcon.style.display = 'flex';
-  } else {
+    $heart.style.display = 'inline-block';
+  } else if (!$parentCard.className.includes('flipped')) {
     $parentCard.className = 'card';
     $lore.className = 'off';
     $flipIcon.style.display = 'none';
+    $heart.style.display = 'none';
   }
 }
 
@@ -172,10 +180,14 @@ function flipCard() {
     $parentCard.style.transform = '';
     $parentCard.className = 'card lore';
     $h3.className = '';
-    $lore.className = 'on';
+    $lore.className = '';
     $h2.className = '';
     var $abilityIcons = $parentCard.querySelector('.ability-icons');
+    var $abilityName = $parentCard.querySelector('.ability-name');
+    var $abilityDescription = $parentCard.querySelector('.ability-description');
     $abilityIcons.remove();
+    $abilityDescription.remove();
+    $abilityName.remove();
   }
 }
 

@@ -23,13 +23,12 @@ h1 {
 }
 
 img:hover {
-  filter: brightness(25%);
+  filter: brightness(45%);
 }
 
 .card {
   position: relative;
   background-size: cover;
-  filter: brightness(60%);
   transition: 300ms;
   border-radius: 15px;
   margin: 1rem;
@@ -46,11 +45,7 @@ img:hover {
 
 .card:hover {
   cursor: pointer;
-  filter: brightness(25%);
-}
-
-.lore {
-  filter: brightness(25%);
+  filter: brightness(65%);
 }
 
 body {
@@ -78,7 +73,9 @@ p {
   text-align: left;
   animation: fadein 2s;
   margin: 0;
-  padding: 0 0 0 1rem;
+  padding: 0.5rem 1rem 0 1rem;
+  max-height: 270px;
+  overflow-y: scroll;
 }
 
 p::-webkit-scrollbar {
@@ -184,6 +181,7 @@ header > div > a {
   position: absolute;
   top: 18px;
   right: 5px;
+  z-index: 5;
 }
 
 .fa-angle-right:hover {
@@ -207,4 +205,9 @@ header > div > a {
 .ability-description {
   transform: rotateY(180deg);
   display: flex;
+}
+
+.fa-heart {
+  animation: fadein 2s;
+  margin-left: 0.5rem;
 }
