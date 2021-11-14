@@ -25,7 +25,7 @@ function renderChampions() {
     $columnHalf.className = 'column-half';
     var $card = document.createElement('div');
     $card.className = 'card';
-    $card.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg' + ')';
+    $card.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + key + '_0.jpg' + ')';
     $card.style.backgroundSize = 'cover';
     for (var i = 0; i < data.allChampionData.data[key].tags.length; i++) {
       $columnHalf.setAttribute('roles', 'All ' + data.allChampionData.data[key].tags[0] + ' ' + data.allChampionData.data[key].tags[1]);
@@ -131,22 +131,22 @@ function handleCardClick(event) {
       if (event.target.className === 'far fa-circle 1') {
         clearDots();
         event.target.className = 'fas fa-circle 1';
-        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[0] + '.jpg' + ')';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[0] + '.jpg' + ')';
         $parentCard.style.backgroundSize = 'cover';
       } else if (event.target.className === 'far fa-circle 2') {
         clearDots();
         event.target.className = 'fas fa-circle 2';
-        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[1] + '.jpg' + ')';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[skinNumArray.length - 1] + '.jpg' + ')';
         $parentCard.style.backgroundSize = 'cover';
       } else if (event.target.className === 'far fa-circle 3') {
         clearDots();
         event.target.className = 'fas fa-circle 3';
-        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[2] + '.jpg' + ')';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[skinNumArray.length - 2] + '.jpg' + ')';
         $parentCard.style.backgroundSize = 'cover';
       } else if (event.target.className === 'far fa-circle 4') {
         clearDots();
         event.target.className = 'fas fa-circle 4';
-        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[3] + '.jpg' + ')';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[skinNumArray.length - 3] + '.jpg' + ')';
         $parentCard.style.backgroundSize = 'cover';
       }
     });
