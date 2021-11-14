@@ -28,7 +28,6 @@ img:hover {
 
 .card {
   position: relative;
-  background-size: cover;
   transition: 300ms;
   border-radius: 15px;
   margin: 1rem;
@@ -40,12 +39,11 @@ img:hover {
 }
 
 .card:active {
-  top: 5px;
+  top: 4px;
 }
 
 .card:hover {
   cursor: pointer;
-  filter: brightness(65%);
 }
 
 body {
@@ -180,7 +178,7 @@ header > div > a {
   animation: fadein 2s;
   position: absolute;
   top: 18px;
-  right: 5px;
+  right: 8px;
   z-index: 5;
 }
 
@@ -210,4 +208,18 @@ header > div > a {
 .fa-heart {
   animation: fadein 2s;
   margin-left: 0.5rem;
+}
+
+.fa-heart:hover {
+  color: rgba(180, 180, 180, 1);
+}
+
+.far.fa-heart.header {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
 }

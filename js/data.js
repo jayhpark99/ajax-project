@@ -1,6 +1,7 @@
 /* exported data */
 var data = {
-  allChampionData: null
+  allChampionData: null,
+  favorites: []
 };
 
 window.addEventListener('beforeunload', handleUnload);
