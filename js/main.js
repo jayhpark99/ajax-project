@@ -44,8 +44,19 @@ function renderChampions() {
     $lore.className = 'off';
     var $flipIcon = document.createElement('i');
     $flipIcon.className = 'fas fa-angle-right';
+    var $skinDiv = document.createElement('div');
+    $skinDiv.className = 'skin-div';
+    var $skin1 = document.createElement('i');
+    $skin1.className = 'fas fa-circle 1';
+    var $skin2 = document.createElement('i');
+    $skin2.className = 'far fa-circle 2';
+    var $skin3 = document.createElement('i');
+    $skin3.className = 'far fa-circle 3';
+    var $skin4 = document.createElement('i');
+    $skin4.className = 'far fa-circle 4';
+    $skinDiv.append($skin1, $skin2, $skin3, $skin4);
 
-    $card.append($name, $title, $lore, $flipIcon);
+    $card.append($name, $title, $lore, $flipIcon, $skinDiv);
     $parentContainer.appendChild($columnHalf);
   }
   data.allChampionData = xhr.response;
@@ -54,21 +65,18 @@ function renderChampions() {
 document.addEventListener('click', handleCardClick);
 
 var $allButtons = document.querySelectorAll('button');
+
 function handleCardClick(event) {
   var $favorites = document.querySelector('.fa-heart.header');
   if (event.target === $favorites) {
     for (var k = 0; k < $allCards.length; k++) {
       var $h2 = $allCards[k].querySelector('h2');
-      if (!data.favorites.includes($h2.innerText)) {
+      if (!data.favorites.includes($h2.textContent)) {
         $allCards[k].style.display = 'none';
       } else {
         $allCards[k].style.display = 'flex';
       }
     }
-  }
-  var $homeIcon = document.querySelector('.fa-th-large');
-  if (event.target === $homeIcon) {
-    showSearchedChampions('All');
   }
   if (event.target.tagName === 'BUTTON') {
     showRole(event.target.textContent);
@@ -102,13 +110,57 @@ function handleCardClick(event) {
       }
     }
   }
+  if (event.target.className.includes('far fa-circle')) {
+    var skinNumArray = [];
+    var $parentCard = event.target.closest('.card');
+    var $key = $parentCard.querySelector('h2').textContent;
+    var xhr3 = new XMLHttpRequest();
+    xhr3.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
+    xhr3.responseType = 'json';
+    xhr3.addEventListener('load', function () {
+      function clearDots() {
+        var $dots = $parentCard.querySelectorAll('.fa-circle');
+        for (var q = 0; q < $dots.length; q++) {
+          $dots[q].className = 'far fa-circle ' + (q + 1);
+        }
+      }
+      var skinsArray = xhr3.response.data[$key].skins;
+      for (var i = 0; i < skinsArray.length; i++) {
+        skinNumArray.push(skinsArray[i].num);
+      }
+      if (event.target.className === 'far fa-circle 1') {
+        clearDots();
+        event.target.className = 'fas fa-circle 1';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[0] + '.jpg' + ')';
+        $parentCard.style.backgroundSize = 'cover';
+      } else if (event.target.className === 'far fa-circle 2') {
+        clearDots();
+        event.target.className = 'fas fa-circle 2';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[1] + '.jpg' + ')';
+        $parentCard.style.backgroundSize = 'cover';
+      } else if (event.target.className === 'far fa-circle 3') {
+        clearDots();
+        event.target.className = 'fas fa-circle 3';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[2] + '.jpg' + ')';
+        $parentCard.style.backgroundSize = 'cover';
+      } else if (event.target.className === 'far fa-circle 4') {
+        clearDots();
+        event.target.className = 'fas fa-circle 4';
+        $parentCard.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(' + 'https://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + $key + '_' + skinNumArray[3] + '.jpg' + ')';
+        $parentCard.style.backgroundSize = 'cover';
+      }
+    });
+    xhr3.send();
+  }
 }
 
 function showRole(role) {
   for (var i = 0; i < $allCards.length; i++) {
     if (!$allCards[i].getAttribute('roles').includes(role)) {
       $allCards[i].style.display = 'none';
-    } else { $allCards[i].style.display = 'flex'; }
+    } else {
+      $allCards[i].style.display = 'flex';
+    }
   }
 }
 
@@ -141,16 +193,19 @@ function toggleLore() {
   var $lore = $parentCard.querySelector('p');
   var $flipIcon = $parentCard.querySelector('.fa-angle-right');
   var $heart = $parentCard.querySelector('.fa-heart');
+  var $skinDiv = $parentCard.querySelector('.skin-div');
   if (!$parentCard.className.includes('lore')) {
     $parentCard.className += ' lore';
     $lore.className = '';
     $flipIcon.style.display = 'flex';
     $heart.style.display = 'inline-block';
+    $skinDiv.style.display = 'none';
   } else if (!$parentCard.className.includes('flipped')) {
     $parentCard.className = 'card';
     $lore.className = 'off';
     $flipIcon.style.display = 'none';
     $heart.style.display = 'none';
+    $skinDiv.style.display = 'flex';
   }
 }
 
