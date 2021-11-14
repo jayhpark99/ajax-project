@@ -103,9 +103,9 @@ function handleCardClick(event) {
     event.target.closest('.column-half').className = 'column-half';
     event.target.className = 'far fa-heart';
     if (data.favorites.includes(event.target.parentElement.textContent)) {
-      for (var l = 0; l < $allCards.length; l++) {
-        if (event.target.parentElement.textContent === data.favorites[l]) {
-          data.favorites.splice(l, 1);
+      for (var h = 0; h < $allCards.length; h++) {
+        if (event.target.parentElement.textContent === data.favorites[h]) {
+          data.favorites.splice(h, 1);
         }
       }
     }
@@ -173,6 +173,7 @@ function handleSubmit(event) {
 
 var $searchBar = document.querySelector('input');
 $searchBar.addEventListener('input', handleInput);
+$searchBar.addEventListener('click', handleInput);
 function handleInput(event) {
   showSearchedChampions($searchBar.value);
 }
