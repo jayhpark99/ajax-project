@@ -24,6 +24,7 @@ h1 {
 
 img:hover {
   filter: brightness(45%);
+  cursor: pointer;
 }
 
 .card {
@@ -36,14 +37,11 @@ img:hover {
   box-shadow: 3px 3px 3px;
   flex-flow: column-reverse;
   flex-direction: column-reverse;
+  cursor: context-menu;
 }
 
 .card:active {
-  top: 4px;
-}
-
-.card:hover {
-  cursor: pointer;
+  top: 3px;
 }
 
 body {
@@ -74,6 +72,7 @@ p {
   padding: 0.5rem 1rem 0 1rem;
   max-height: 270px;
   overflow-y: scroll;
+  cursor: auto;
 }
 
 p::-webkit-scrollbar {
@@ -159,7 +158,6 @@ input {
 
 .fa-caret-square-up:hover {
   color: rgba(250, 250, 250, 0.7);
-  cursor: pointer;
 }
 
 html {
@@ -236,6 +234,10 @@ form {
   opacity: 60%;
 }
 
-.fa-circle:hover {
-  background-color: black;
+.card a {
+  cursor: pointer;
+}
+
+i {
+  cursor: pointer;
 }

@@ -40,7 +40,13 @@ function renderChampions() {
     var $title = document.createElement('h3');
     $title.textContent = capitalizeFirstLetter(data.allChampionData.data[key].title);
     var $lore = document.createElement('p');
-    $lore.textContent = data.allChampionData.data[key].blurb;
+    $lore.textContent = data.allChampionData.data[key].blurb + ' ';
+    var $readMore = document.createElement('a');
+    $readMore.textContent = 'MORE';
+    $readMore.className = 'read-more-link';
+    $readMore.style.textDecoration = 'underline';
+    $readMore.style.color = 'rgb(247, 163, 80)';
+    $lore.appendChild($readMore);
     $lore.className = 'off';
     var $flipIcon = document.createElement('i');
     $flipIcon.className = 'fas fa-angle-right';
@@ -62,11 +68,11 @@ function renderChampions() {
   data.allChampionData = xhr.response;
 }
 
-document.addEventListener('click', handleCardClick);
+document.addEventListener('click', handleClick);
 
 var $allButtons = document.querySelectorAll('button');
 
-function handleCardClick(event) {
+function handleClick(event) {
   var $favorites = document.querySelector('.fa-heart.header');
   if (event.target === $favorites) {
     for (var k = 0; k < $allCards.length; k++) {
@@ -152,6 +158,18 @@ function handleCardClick(event) {
     });
     xhr3.send();
   }
+  if (event.target.className === 'read-more-link') {
+    $parentCard = event.target.closest('.card');
+    $key = $parentCard.querySelector('h2').textContent;
+    var $lore = $parentCard.querySelector('p');
+    var xhr4 = new XMLHttpRequest();
+    xhr4.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
+    xhr4.responseType = 'json';
+    xhr4.addEventListener('load', function () {
+      $lore.textContent = xhr4.response.data[$key].lore;
+    });
+    xhr4.send();
+  }
 }
 
 function showRole(role) {
@@ -194,19 +212,16 @@ function toggleLore() {
   var $lore = $parentCard.querySelector('p');
   var $flipIcon = $parentCard.querySelector('.fa-angle-right');
   var $heart = $parentCard.querySelector('.fa-heart');
-  var $skinDiv = $parentCard.querySelector('.skin-div');
   if (!$parentCard.className.includes('lore')) {
     $parentCard.className += ' lore';
     $lore.className = '';
     $flipIcon.style.display = 'flex';
     $heart.style.display = 'inline-block';
-    $skinDiv.style.display = 'none';
-  } else if (!$parentCard.className.includes('flipped')) {
+  } else if (!$parentCard.className.includes('flipped') && event.target.tagName !== 'A') {
     $parentCard.className = 'card';
     $lore.className = 'off';
     $flipIcon.style.display = 'none';
     $heart.style.display = 'none';
-    $skinDiv.style.display = 'flex';
   }
 }
 
@@ -215,12 +230,14 @@ function flipCard() {
   var $lore = $parentCard.querySelector('p');
   var $h3 = $parentCard.querySelector('h3');
   var $h2 = $parentCard.querySelector('h2');
+  var $skinDiv = $parentCard.querySelector('.skin-div');
   if ($parentCard.className === 'card lore') {
     $h3.className = 'off';
     $lore.className = 'off';
     $h2.className = 'off';
     $parentCard.style.transform = 'rotateY(180deg)';
     $parentCard.className = 'card lore flipped';
+    $skinDiv.style.display = 'none';
     var xhr2 = new XMLHttpRequest();
     xhr2.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $h2.textContent + '.json');
     xhr2.responseType = 'json';
@@ -276,6 +293,7 @@ function flipCard() {
     $h3.className = '';
     $lore.className = '';
     $h2.className = '';
+    $skinDiv.style.display = 'flex';
     var $abilityIcons = $parentCard.querySelector('.ability-icons');
     var $abilityName = $parentCard.querySelector('.ability-name');
     var $abilityDescription = $parentCard.querySelector('.ability-description');
