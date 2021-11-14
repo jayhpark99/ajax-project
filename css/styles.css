@@ -198,9 +198,10 @@ header > div > a {
 
 .ability-icons,
 .ability-name,
-.ability-description {
+.random-tip {
   transform: rotateY(180deg);
   display: flex;
+  animation: none;
 }
 
 .fa-heart {

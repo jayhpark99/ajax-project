@@ -243,6 +243,11 @@ function flipCard() {
     xhr2.responseType = 'json';
     xhr2.addEventListener('load', function () {
       var individualChampionData = xhr2.response;
+      var $tip = document.createElement('p');
+      $tip.className = 'random-tip';
+      if (xhr2.response.data[$h2.textContent].allytips.length !== 0) {
+        $tip.textContent = 'TIPS: ' + xhr2.response.data[$h2.textContent].allytips[Math.floor(Math.random() * xhr2.response.data[$h2.textContent].allytips.length)];
+      }
       var $iconSpan = document.createElement('span');
       $iconSpan.className = 'ability-icons';
       var $qIcon = document.createElement('img');
@@ -253,36 +258,30 @@ function flipCard() {
       $eIcon.setAttribute('src', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/img/spell/' + individualChampionData.data[$h2.textContent].spells[2].image.full);
       var $rIcon = document.createElement('img');
       $rIcon.setAttribute('src', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/img/spell/' + individualChampionData.data[$h2.textContent].spells[3].image.full);
-      $iconSpan.prepend($qIcon, $wIcon, $eIcon, $rIcon);
-      $parentCard.appendChild($iconSpan);
+      $iconSpan.append($qIcon, $wIcon, $eIcon, $rIcon);
+      $parentCard.append($iconSpan);
       var $name = document.createElement('p');
       $name.className = 'yellow ability-name off';
-      var $description = document.createElement('p');
-      $description.className = 'ability-description off';
-      $parentCard.append($name, $description);
-      var $abilityName = $parentCard.querySelector('.ability-name');
-      var $abilityDescription = $parentCard.querySelector('.ability-description');
+      $parentCard.append($name);
+      $parentCard.append($tip);
       $iconSpan.addEventListener('click', function () {
+        $tip = $parentCard.querySelector('.random-tip');
         if (event.target === $qIcon) {
-          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[0].name;
-          $abilityName.className = 'yellow ability-name';
-          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[0].description;
-          $abilityDescription.className = 'ability-description';
+          $name.textContent = individualChampionData.data[$h2.textContent].spells[0].name;
+          $name.className = 'yellow ability-name';
+          $tip.textContent = individualChampionData.data[$h2.textContent].spells[0].description;
         } else if (event.target === $wIcon) {
-          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[1].name;
-          $abilityName.className = 'yellow ability-name';
-          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[1].description;
-          $abilityDescription.className = 'ability-description';
+          $name.textContent = individualChampionData.data[$h2.textContent].spells[1].name;
+          $name.className = 'yellow ability-name';
+          $tip.textContent = individualChampionData.data[$h2.textContent].spells[1].description;
         } else if (event.target === $eIcon) {
-          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[2].name;
-          $abilityName.className = 'yellow ability-name';
-          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[2].description;
-          $abilityDescription.className = 'ability-description';
+          $name.textContent = individualChampionData.data[$h2.textContent].spells[2].name;
+          $name.className = 'yellow ability-name';
+          $tip.textContent = individualChampionData.data[$h2.textContent].spells[2].description;
         } else if (event.target === $rIcon) {
-          $abilityName.textContent = individualChampionData.data[$h2.textContent].spells[3].name;
-          $abilityName.className = 'yellow ability-name';
-          $abilityDescription.textContent = individualChampionData.data[$h2.textContent].spells[3].description;
-          $abilityDescription.className = 'ability-description';
+          $name.textContent = individualChampionData.data[$h2.textContent].spells[3].name;
+          $name.className = 'yellow ability-name';
+          $tip.textContent = individualChampionData.data[$h2.textContent].spells[3].description;
         }
       });
     });
@@ -296,9 +295,9 @@ function flipCard() {
     $skinDiv.style.display = 'flex';
     var $abilityIcons = $parentCard.querySelector('.ability-icons');
     var $abilityName = $parentCard.querySelector('.ability-name');
-    var $abilityDescription = $parentCard.querySelector('.ability-description');
+    var $tip = $parentCard.querySelector('.random-tip');
     $abilityIcons.remove();
-    $abilityDescription.remove();
+    $tip.remove();
     $abilityName.remove();
   }
 }
