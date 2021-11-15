@@ -199,7 +199,7 @@ function handleInput(event) {
 function showSearchedChampions(name) {
   var currentTag = document.querySelector('.selected');
   for (var i = 0; i < $allCards.length; i++) {
-    if ($allCards[i].childNodes[0].childNodes[0].textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
+    if ($allCards[i].querySelector('h2').textContent.toLowerCase().includes(name.toLowerCase()) && $allCards[i].getAttribute('roles').toLowerCase().includes(currentTag.textContent.toLowerCase())) {
       $allCards[i].style.display = '';
     } else {
       $allCards[i].style.display = 'none';
