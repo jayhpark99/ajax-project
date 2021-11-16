@@ -5,10 +5,11 @@ xhr.open('GET', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/cham
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
   data.allChampionData = xhr.response;
-  renderChampions();
 });
 xhr.send();
 
+document.addEventListener('DOMContentLoad', renderChampions);
+renderChampions();
 var $allCards = document.querySelectorAll('.column-half');
 
 for (var p = 0; p < $allCards.length; p++) {
@@ -65,6 +66,7 @@ function renderChampions() {
     $card.append($name, $title, $lore, $flipIcon, $skinDiv);
     $parentContainer.appendChild($columnHalf);
   }
+  data.allChampionData = xhr.response;
 }
 
 document.addEventListener('click', handleClick);
