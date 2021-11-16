@@ -1,7 +1,7 @@
 var $parentContainer = document.querySelector('.container');
 
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json');
+xhr.open('GET', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion.json');
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
   data.allChampionData = xhr.response;
@@ -121,7 +121,7 @@ function handleClick(event) {
     var $parentCard = event.target.closest('.card');
     var $key = $parentCard.querySelector('h2').textContent;
     var xhr3 = new XMLHttpRequest();
-    xhr3.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
+    xhr3.open('GET', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
     xhr3.responseType = 'json';
     xhr3.addEventListener('load', function () {
       function clearDots() {
@@ -163,7 +163,7 @@ function handleClick(event) {
     $key = $parentCard.querySelector('h2').textContent;
     var $lore = $parentCard.querySelector('p');
     var xhr4 = new XMLHttpRequest();
-    xhr4.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
+    xhr4.open('GET', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $key + '.json');
     xhr4.responseType = 'json';
     xhr4.addEventListener('load', function () {
       $lore.textContent = xhr4.response.data[$key].lore;
@@ -239,7 +239,7 @@ function flipCard() {
     $parentCard.className = 'card lore flipped';
     $skinDiv.style.display = 'none';
     var xhr2 = new XMLHttpRequest();
-    xhr2.open('GET', 'http://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $h2.textContent + '.json');
+    xhr2.open('GET', 'https://ddragon.leagueoflegends.com/cdn/11.22.1/data/en_US/champion/' + $h2.textContent + '.json');
     xhr2.responseType = 'json';
     xhr2.addEventListener('load', function () {
       var individualChampionData = xhr2.response;
