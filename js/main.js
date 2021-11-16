@@ -20,6 +20,7 @@ for (var p = 0; p < $allCards.length; p++) {
 }
 
 function renderChampions() {
+  data.allChampionData = xhr.response;
   for (var key in data.allChampionData.data) {
     var $columnHalf = document.createElement('div');
     $columnHalf.className = 'column-half';
@@ -65,7 +66,6 @@ function renderChampions() {
     $card.append($name, $title, $lore, $flipIcon, $skinDiv);
     $parentContainer.appendChild($columnHalf);
   }
-  data.allChampionData = xhr.response;
 }
 
 document.addEventListener('click', handleClick);
