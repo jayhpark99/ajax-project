@@ -8,7 +8,6 @@ xhr.addEventListener('load', function () {
 });
 xhr.send();
 
-document.addEventListener('DOMContentLoad', renderChampions);
 renderChampions();
 var $allCards = document.querySelectorAll('.column-half');
 
