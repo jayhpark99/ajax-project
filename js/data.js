@@ -1,6 +1,5 @@
 /* exported data */
 var data = {
-  allChampionData: null,
   favorites: []
 };
 
